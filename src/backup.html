@@ -1,0 +1,55 @@
+const express = require('express');
+const mysql = require('mysql');
+var cors = require('cors')
+const app = express();
+
+app.use(cors())
+const connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: 'root',
+      database: 'new_schema',
+    
+});
+
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+  } else {
+    console.log('Connected to MySQL database');
+  }
+
+});
+app.get('/category', (req, res) => {
+  console.log("hello")
+    // Perform a SELECT query on the 'table_1' table
+    connection.query('SELECT * FROM table_1', (err, results) => {
+      if (err) {
+        console.error('Error executing MySQL query:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+        return;
+      }
+  
+      res.json(results);
+    });
+  });
+
+  app.get('/products', (req, res) => {
+    // Perform a SELECT query on the 'table_1' table
+    connection.query('SELECT * FROM items_1', (err, results) => {
+      if (err) {
+        console.error('Error executing MySQL query:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+        return;
+      }
+      console.log(results,"hello");
+      // res.json({results: results});
+      res.send({results: results})
+    });
+  });
+
+
+app.listen(4001,()=>{
+    console.log("Listening to port:9001");
+});

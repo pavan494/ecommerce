@@ -1,0 +1,38 @@
+/* Homepage.css */
+
+
+.home-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: pink; 
+}
+
+.image-container {
+    position: relative;
+}
+
+.category-button {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4285f4;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+}
+
+.category-button:hover {
+    background-color: #2a5c8a;
+}
+
+.category-image {
+    width: 100%; /* Take up the full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+}
